@@ -13,9 +13,9 @@ resource "local_file" "init" {
 
 resource "local_file" "core" {
   file_permission = "0644"
-  filename        = "../backend.tfvars"
+  filename        = "../core/backend.tfvars"
   content         = <<-EOT
     bucket = "${google_storage_bucket.tfstate.name}"
-    prefix = "argo_test/core"
+    prefix = "argo_test/core.tfstate"
   EOT
 }

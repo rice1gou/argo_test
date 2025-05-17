@@ -1,7 +1,7 @@
 locals {
   labels = {
-    project     = "${var.project_id}"
-    owner_name  = "${var.service_name}"
+    project = "${var.project_id}"
+    service = "${var.service_name}"
   }
 }
 

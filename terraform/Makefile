@@ -12,15 +12,19 @@ _terraform.setup:
 
 .PHONY: _terraform.init
 _terraform.init:
-	terraform init -upgrade -backend-config backend.tfvars
+	cd core && terraform init -upgrade -backend-config backend.tfvars
 
 .PHONY: _terraform.plan
 _terraform.plan:
-	terraform plan -var-file=terraform.tfvars
+	cd core && terraform plan -var-file=variables.tfvars
 
 .PHONY: _terraform.apply
 _terraform.apply:
-	terraform apply -var-file=terraform.tfvars
+	cd core && terraform apply -var-file=variables.tfvars
+
+.PHONY: _terraform.destroy
+_terraform.destroy:
+	cd core && terraform destroy -var-file=variables.tfvars
 
 
 #############################
@@ -50,3 +54,10 @@ terraform.plan:
 .PHONY: terraform.apply
 terraform.apply:
 	@make _terraform.apply
+
+#############################
+# destroy
+#############################
+.PHONY: terraform.destroy
+terraform.destroy:
+	@make _terraform.destroy
